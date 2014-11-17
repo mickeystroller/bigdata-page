@@ -960,7 +960,7 @@ ul.contact li a.icon-rss:before
 	width: 120px;
 	height: 80px;
 	line-height: 80px;
-	background: #FFC000;
+	background: #2A70E8;
 	position: relative;
 	text-align: center;
 	color: #FFF;
@@ -975,7 +975,7 @@ ul.contact li a.icon-rss:before
 	height: 0;
 	border-left: 60px solid transparent;
 	border-right: 60px solid transparent;
-	border-bottom: 30px solid #FFC000;
+	border-bottom: 30px solid #2A70E8;
 }
 .hexagon:after {
 	content: "";
@@ -986,7 +986,7 @@ ul.contact li a.icon-rss:before
 	height: 0;
 	border-left: 60px solid transparent;
 	border-right: 60px solid transparent;
-	border-top: 30px solid #FFC000;
+	border-top: 30px solid #2A70E8;
 }
 
 #portfolio
