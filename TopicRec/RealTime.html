@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootbusiness | Short description about company">
+    <meta name="author" content="Your name">
+    <title>AceRec | Academic Recommendation</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap responsive -->
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <!-- Font awesome - iconic font with IE7 support --> 
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome-ie7.css" rel="stylesheet">
+    <!-- Bootbusiness theme -->
+    <link href="css/boot-business.css" rel="stylesheet">
+    <link href="css/ownstyle.css" rel="stylesheet">
+    <script src="js/d3.v3.min.js"></script>
+    <style> 
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+</style>
+
+  </head>
+  <body>
+    <!-- Start: HEADER -->
+    <header>
+      <!-- Start: Navigation wrapper -->
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a href="index.html" class="brand brand-bootbus">AceRec</a>
+            <!-- Below button used for responsive navigation -->
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Start: Primary navigation -->
+            <div class="nav-collapse collapse">        
+              <ul class="nav pull-right">
+                <li><a href="../index.html">Homepage</a></li>
+                <li><a href="#">Papers</a></li>
+                <li><a href="#">Topics</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End: Navigation wrapper -->   
+    </header>
+    <!-- End: HEADER -->
+    <!-- Start: MAIN CONTENT -->
+    <div class="content">
+      <div class="container">
+        <article class="article">
+          <div class="page-header">
+			<form class="form-wrapper cf">
+			<input type="text" placeholder="Real Time System" required>
+				<button type="submit">Search</button>
+			</form>
+
+          </div>
+          <div class="row">
+            <div class="span8">
+              <h3>Results for topic: <em>Real Time System</em> </h3>            
+
+              <div class="row bottom-space">
+              <div class="span7">
+                <div class="paper">
+                  		<div class="title">Dynamic Integrated Scheduling of Hard <span id="key">Real-Time</span>, 
+                  		Soft <span id="key">Real-Time</span> and <span id="key">Non-Real-Time</span> Processes </div>
+						<div class="author">Scott A. Brandt,Scott Banachowski,Caixue Lin,Timothy Bisson </div>
+						<div class="date"> 2003</div>
+						<div class="conference">Proceedings of the 24th IEEE International <span id="key">Real-Time</span> Systems Symposium </div>
+						<div class="abstract"><span id="key">Real-time</span> systems are growing in complexity and <span id="key">real-time</span> and soft <span id="key">real-time</span> applications 
+						are becoming commonin general-purpose computing environments. Thus, there isa growing need for scheduling solutions
+						 that simultaneouslysupport processes with a variety of different timeliness constraints.Toward this goal we have developed 
+						 the ResourceAllocation/Dispatching (RAD) integrated scheduling modeland the Rate-Based Earliest Deadline (RBED) 
+						 integratedmulti-class <span id="key">real-time</span> scheduler based on this model.</div>
+                </div>
+                </div>
+              </div>
+              
+              <div class="row bottom-space">
+                <div class="span7">
+					<div class="paper">
+                  		<div class="title">Hierarchical <span id="key">Time-Stamp</span> Protocol: Acquiring Reliable <span id="key">Time-stamp</span> from Local Time Stamping Server </div>
+						<div class="author">Xian Pan,J.-L. Zheng </div>
+						<div class="date"> 2009</div>
+						<div class="conference">Proceedings of the 2009 Second International Symposium on Electronic Commerce and Security - Volume 01 </div>
+						<div class="abstract">Time Stamp Protocol (TSP) is a basic security component in e-world, and Time Stamping Server (TSS)as a Trusted Third Party (TTP) generally is implemented on Internet other than in LAN. The acquiring reliability of the existing time-stamp protocols has been mainly focused by researchers in recent years, but the time delay problem produced by frequent time-stamp request has not been paid enough attention to yet</div>
+                	</div>
+                </div>
+              </div>
+              
+              <div class="row bottom-space">
+                <div class="span7">
+                  <div class="paper">
+                  		<div class="title">Hardware support for WCET analysis of hard <span id="key">real-time</span> multicore systems </div>
+						<div class="author">arco Paolieri,Eduardo Quiñones,Francisco J. Cazorla,Guillem Bernat,Mateo Valero </div>
+						<div class="date"> 2009</div>
+						<div class="conference">ACM SIGARCH Computer Architecture News </div>
+						<div class="abstract">The increasing demand for new functionalities in current and future hard <span id="key">real-time</span> embedded systems like automotive, avionics and space industries is driving an increase in the performance required in embedded processors.</div>
+                	</div>
+                </div>
+              </div>           
+            </div>
+            
+             <div class="span4" > 
+            	<h3> Topic Graph </h3>
+            	<div class="result" style = "border:solid 1px"> 
+            	<script>
+
+var width = 370,
+    height = 420;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .charge(-70)
+    .linkDistance(10)
+    .size([width, height]);
+
+var svg = d3.select("div.result").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("p611493.json", function(error, graph) {
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+//       .attr("r", 5)
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 5)
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+
+</script>
+            	</div>
+            	
+            </dic>
+            
+          </div>
+        <article>
+      </div>
+    </div>
+    <!-- End: MAIN CONTENT -->
+    <!-- Start: FOOTER -->
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2014 SJTU-IWCT. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+    <!-- End: FOOTER -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/boot-business.js"></script>
+  </body>
+</html>

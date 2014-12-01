@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootbusiness | Short description about company">
+    <meta name="author" content="Your name">
+    <title>AceRec | Academic Recommendation</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap responsive -->
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <!-- Font awesome - iconic font with IE7 support --> 
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome-ie7.css" rel="stylesheet">
+    <!-- Bootbusiness theme -->
+    <link href="css/boot-business.css" rel="stylesheet">
+    <link href="css/ownstyle.css" rel="stylesheet">
+    <script src="js/d3.v3.min.js"></script>
+    <style> 
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+</style>
+
+  </head>
+  <body>
+    <!-- Start: HEADER -->
+    <header>
+      <!-- Start: Navigation wrapper -->
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a href="index.html" class="brand brand-bootbus">AceRec</a>
+            <!-- Below button used for responsive navigation -->
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Start: Primary navigation -->
+            <div class="nav-collapse collapse">        
+              <ul class="nav pull-right">
+                <li><a href="../index.html">Homepage</a></li>
+                <li><a href="#">Papers</a></li>
+                <li><a href="#">Topics</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End: Navigation wrapper -->   
+    </header>
+    <!-- End: HEADER -->
+    <!-- Start: MAIN CONTENT -->
+    <div class="content">
+      <div class="container">
+        <article class="article">
+          <div class="page-header">
+			<form class="form-wrapper cf">
+			<input type="text" placeholder="Database" required>
+				<button type="submit">Search</button>
+			</form>
+
+          </div>
+          <div class="row">
+            <div class="span8">
+              <h3>Results for topic: <em>Database</em> </h3>            
+              <div class="row bottom-space">
+                <div class="span7">
+                    <div class="paper">
+                  		<div class="title">REL-NER: a tool for converting a relational 
+                  		<span id="key">database </span> schema into a nested entity-relationship schema </div>
+						<div class="author">Bijan Farhang </div>
+						<div class="date"> 1995</div>
+						<div class="conference"> </div>
+						<div class="abstract"></div>
+                  	</div>
+                </div>
+              </div>
+              
+              <div class="row bottom-space">
+                <div class="span7">
+                  <div class="paper">
+                  		<div class="title"><span id="key">Oracle PL/SQL</span> Tips and Techniques, 1st edition </div>
+						<div class="author">Rich Niemic,Joseph C. Trezzo,Bradley D. Brown </div>
+						<div class="date"> 1999</div>
+						<div class="conference"> </div>
+						<div class="abstract">
+						Expand your <span id="key">PL/SQL</span> knowledge to the next level by using hundreds of <span id="key">PL/SQL</span> 
+						tips and techniques provided in this one-of-a-kind reference. Expert technical 
+						knowledge at the turn of a page.</div>
+                  	</div>
+                </div>
+              </div>
+              
+              <div class="row bottom-space">
+                <div class="span7">   
+                  	<div class="paper">
+                  		<div class="title">Creating a Self-Tuning Oracle <span id="key">Database</span>: 
+                  		Automating Oracle9i Dynamic SGA Performance </div>
+						<div class="author">Donald K. Burleson </div>
+						<div class="date"> 2003</div>
+						<div class="conference"> </div>
+						<div class="abstract"></div>
+                  	</div>
+                </div>
+              </div>   
+              
+              
+            </div>
+            <div class="span4" > 
+            	<h3> Topic Graph </h3>
+            	<div class="result" style = "border:solid 1px"> 
+            	<script>
+
+var width = 370,
+    height = 420;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .charge(-70)
+    .linkDistance(10)
+    .size([width, height]);
+
+var svg = d3.select("div.result").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("p247613.json", function(error, graph) {
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+//       .attr("r", 5)
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 5)
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+
+</script>
+            	</div>
+            	
+            </dic>
+            
+          </div>
+        <article>
+      </div>
+    </div>
+    <!-- End: MAIN CONTENT -->
+    <!-- Start: FOOTER -->
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2014 SJTU-IWCT. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+    <!-- End: FOOTER -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/boot-business.js"></script>
+<!--     <script src="http://d3js.org/d3.v3.min.js"></script> -->
+    
+  </body>
+</html>

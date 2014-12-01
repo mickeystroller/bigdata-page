@@ -1,0 +1,26 @@
+.login-option {
+  padding-left: 10px;
+}
+.contact-wrap {
+  position: relative;
+}
+.contact-wrap blockquote{
+    height: 75%;
+}
+.wrap h1, h2, h3,
+      h4, h5, h6 {
+  font-weight: normal;
+}
+.main-display {
+  margin-right: 20px;
+}
+.contact-wrap blockquote:before {
+  position: absolute;
+  content: '\0022';
+  font-size: 150px;
+  line-height: 100px;
+  font-style: italic;
+  top: 0px;
+  right: 20px;
+  font-family: Cambria, Georgia, serif;
+}
